@@ -8,6 +8,6 @@ spec:
   - name: docker-container
     image: docker:latest
     command:
-      - cat
+      - dockerd
     tty: true
     privileged: true
