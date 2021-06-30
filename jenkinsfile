@@ -1,5 +1,4 @@
 pipeline {
-    def app
     agent {
         kubernetes {
             defaultContainer 'jnlp'
@@ -22,8 +21,10 @@ pipeline {
         }
         stage("Test image"){
             steps{
-                app.inside {
-                    sh 'echo "testing"'
+                script{
+                    app.inside {
+                        sh 'echo "testing"'
+                    }
                 }
             }
         }
