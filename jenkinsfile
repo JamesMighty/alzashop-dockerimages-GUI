@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        repo = "https://us-central1-docker.pkg.dev"
+        repo = "us-central1-docker.pkg.dev"
         repo_auth_id = "composite-area-316917"
         image_name = "composite-area-316917/dockerstore/asug"
         image_ver = "latest"
@@ -39,7 +39,7 @@ pipeline {
                 container("docker-container"){
                     sh 'echo "pushing ..."'
                     script {
-                        docker.withRegistry(repo, repo_auth_id){
+                        docker.withRegistry("https://${repo}", repo_auth_id){
                             app.push("${env.BUILD_NUMBER}")
                             app.push("latest")
                         }
