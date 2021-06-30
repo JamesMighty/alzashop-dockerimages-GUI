@@ -7,7 +7,5 @@ spec:
   containers:
   - name: docker-container
     image: docker:latest
-    command:
-      - bash dockerd
     tty: true
     privileged: true
