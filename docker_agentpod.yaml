@@ -6,6 +6,6 @@ metadata:
 spec:
   containers:
   - name: docker-container
-    image: docker:latest
+    image: docker:20-dind
     tty: true
     privileged: true
