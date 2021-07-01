@@ -9,7 +9,10 @@ spec:
   - name: docker-container
     image: docker:20-dind
     tty: true
-    privileged: true
+    privileged: false
+    resources:
+      requested:
+        memory: 1000Mi
     volumeMounts:
       - name: varrun
         mountPath: /var/run/
