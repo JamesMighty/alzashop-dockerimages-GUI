@@ -24,6 +24,8 @@ spec:
     ports:
       - containerPort: 58524
       - containerPort: 80
+    imagePullSecrets:
+      - name: artifact-registry
   volumes:
     - name: unixsocket
       hostPath:
