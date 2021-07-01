@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         repo = "us-central1-docker.pkg.dev"
-        repo_auth_id = "composite-area-316917-usrpass"
+        repo_auth_id = "gcloud-project-mamaner-gmail"
         image_name = "composite-area-316917/dockerstore/asug"
         image_ver = "latest"
     }
