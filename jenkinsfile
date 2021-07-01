@@ -6,7 +6,8 @@ pipeline {
         }
     }
     environment {
-        repo = "us-central1-docker.pkg.dev/composite-area-316917/dockerstore"
+        repo = "us-central1-docker.pkg.dev"
+        repo_path = "composite-area-316917/dockerstore"
         repo_auth_id = "composite-area-316917-usrpass"
         image_name = "asug"
         image_ver = "latest"
@@ -18,7 +19,7 @@ pipeline {
                     sh 'echo "building ."'
                     sh "echo \"build num:${env.BUILD_NUMBER}\""
                     script {
-                        app = docker.build("${repo}/${image_name}:${image_ver}")
+                        app = docker.build("${repo}/${repo_path}/${image_name}:${image_ver}")
                     }
                 }
             }
@@ -45,7 +46,7 @@ pipeline {
                 container("docker-container"){
                     sh 'echo "pushing ..."'
                     script {
-                        docker.withRegistry("${repo}", repo_auth_id){
+                        docker.withRegistry("https://${repo}", repo_auth_id){
                             app.push("${env.BUILD_NUMBER}")
                             app.push("latest")
                         }
