@@ -12,3 +12,7 @@ spec:
     volumeMounts:
         - name: varrun
           mountPath: /var/run/
+    volumes:
+      - name: varrun
+        hostPath:
+          path: /var/run/
