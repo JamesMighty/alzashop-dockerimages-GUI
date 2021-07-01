@@ -11,8 +11,8 @@ spec:
     privileged: true
     resources:
       requests:
-        cpu: 200m
-        memory: 1500Mi
+        cpu: "0.5"
+        memory: 2000Mi
     volumeMounts:
       - name: varrun
         mountPath: /var/run/
