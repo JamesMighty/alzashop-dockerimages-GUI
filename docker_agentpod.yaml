@@ -9,4 +9,6 @@ spec:
     image: docker:20-dind
     tty: true
     privileged: true
-    cache_dir: "cache"
+    volumeMounts:
+        - name: varrun
+          mountPath: /var/run/
