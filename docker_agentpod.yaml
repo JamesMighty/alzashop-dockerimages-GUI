@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   labels:
     jenkins: kubepod-slave
+podRetention: onFailure
 spec:
   containers:
   - name: docker-container
