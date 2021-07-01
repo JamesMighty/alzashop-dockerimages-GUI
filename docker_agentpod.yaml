@@ -9,12 +9,21 @@ spec:
     image: docker:20-dind
     tty: true
     privileged: true
+    resources:
+      requests:
+        cpu: 200m
+        memory: 1500Mi
     volumeMounts:
       - name: varrun
         mountPath: /var/run/
+      - name: tmp
+        mountPath: /tmp
     ports:
       - containerPort: 58524
   volumes:
     - name: varrun
       hostPath:
         path: /var/run/
+    - name: tmp
+      hostPath:
+        path: /tmp
