@@ -62,5 +62,3 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 x11vnc xvfb firefox
 # add pass to x11vnc
 RUN mkdir ~/.vnc && x11vnc -storepasswd ${x11vnc_pass} ~/.vnc/passwd
-
-RUN iconfig
