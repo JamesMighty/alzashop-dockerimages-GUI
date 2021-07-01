@@ -22,6 +22,11 @@ pipeline {
                     }
                 }
             }
+            post {
+                always {
+                    jiraSendBuildInfo site: 'jh-itk-cpp.atlassian.net'
+                }
+            }
         }
         stage("Test image"){
             steps{
@@ -45,6 +50,11 @@ pipeline {
                             app.push("latest")
                         }
                     }
+                }
+            }
+            post {
+                always {
+                    jiraSendDeploymentInfo site: 'jh-itk-cpp.atlassian.net', environmentId: 'test-ACPT-2-docker-gui-image', environmentName: 'kubepod: ACPT-2 build - docker gui image', environmentType: 'testing', issueKeys: ['ACPT-2']
                 }
             }
         }
