@@ -7,18 +7,23 @@ podRetention: onFailure
 spec:
   containers:
   - name: docker-container
-    image: docker:20-dind
+    image: docker:20-dind-rootless
     tty: true
-    privileged: true
+    privileged: false
     resources:
       requested:
         memory: 1000Mi
     volumeMounts:
-      - name: root
-        mountPath: /
+      - name: varrun
+        mountPath: /var/run
+      - name: tmp
+        mountPath: /tmp
     ports:
       - containerPort: 58524
   volumes:
-    - name: root
+    - name: varrun
       hostPath:
-        path: /
+        path: /var/run
+    - name: tmp
+      hostPath:
+        path: /tmp
