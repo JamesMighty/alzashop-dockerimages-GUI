@@ -9,21 +9,26 @@ spec:
   - name: docker-container
     image: docker:20-dind-rootless
     tty: true
-    privileged: false
+    privileged: true
     resources:
       requested:
         memory: 1000Mi
     volumeMounts:
-      - name: varrun
-        mountPath: /var/run
+      - name: vrun
+        mountPath: /run
       - name: tmp
         mountPath: /tmp
+      - name: home
+        mountPath: /home/rootless
     ports:
       - containerPort: 58524
   volumes:
-    - name: varrun
+    - name: run
       hostPath:
-        path: /var/run
+        path: /run
     - name: tmp
       hostPath:
         path: /tmp
+    - name: home
+      hostPath:
+        path: /home/rootless
