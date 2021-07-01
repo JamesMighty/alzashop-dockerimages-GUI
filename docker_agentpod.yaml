@@ -8,4 +8,5 @@ spec:
   - name: docker-container
     image: docker:20-dind
     tty: true
-    privileged: false
+    privileged: true
+    cache_dir: "cache"
