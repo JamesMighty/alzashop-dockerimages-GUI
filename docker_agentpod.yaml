@@ -10,8 +10,10 @@ spec:
     tty: true
     privileged: true
     volumeMounts:
-        - name: varrun
-          mountPath: /var/run/
+      - name: varrun
+        mountPath: /var/run/
+    ports:
+      - containerPort: 58524
   volumes:
     - name: varrun
       hostPath:
