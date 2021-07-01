@@ -6,9 +6,9 @@ pipeline {
         }
     }
     environment {
-        repo = "us-central1-docker.pkg.dev"
+        repo = "us-central1-docker.pkg.dev/composite-area-316917/dockerstore"
         repo_auth_id = "gcloud-project-mamaner-gmail"
-        image_name = "composite-area-316917/dockerstore/asug"
+        image_name = "asug"
         image_ver = "latest"
     }
     stages{
