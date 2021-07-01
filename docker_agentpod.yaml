@@ -7,10 +7,13 @@ podRetention: onFailure
 spec:
   containers:
   - name: docker-container
-    image: docker:20-dind
+    image: docker:latest
     tty: true
     privileged: true
+    command: ['docker', 'run', '-p', '80:80', 'httpd:latest']
     resources:
+      limits:
+        memory: "2000Mi"
       requests:
         memory: "1000Mi"
     volumeMounts:
@@ -20,6 +23,7 @@ spec:
         mountPath: /tmp
     ports:
       - containerPort: 58524
+      - containerPort: 80
   volumes:
     - name: unixsocket
       hostPath:
