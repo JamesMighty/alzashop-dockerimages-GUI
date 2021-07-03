@@ -35,7 +35,11 @@ pipeline {
                     sh 'echo "testing .."'
                     script{
                         app.inside {
-                            sh 'echo "testing"'
+                            sh 'echo "testing"'.
+                            sh 'geckodriver --version'
+                            sh 'python3 --version'
+                            sh 'pip --version'
+                            sh 'firefox -width=1080 -height=720 -url http://gooogle.com'
                         }
                     }
                 }
