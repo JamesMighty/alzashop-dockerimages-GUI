@@ -34,12 +34,13 @@ pipeline {
                 container("docker-container"){
                     sh 'echo "testing .."'
                     script{
-                        image.inside("-p 6080:8080 -p 5900:5900 -v /dev/shm:/dev/shm") {
+                        image.inside("-p 6080:8080 -p 5900:5900 -v /dev/shm:/dev/shm --entrypoint=bash") {
                             sh 'echo "testing"'.
                             sh 'geckodriver --version'
                             sh 'python3 --version'
                             sh 'pip --version'
-                            sh 'sleep 60'
+                            sh 'sleep 120'
+                            sh 'firefox -width=1080 -height=720 -url http://google.com'
                         }
                     }
                 }
