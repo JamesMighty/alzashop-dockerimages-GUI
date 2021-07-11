@@ -33,9 +33,9 @@ pipeline {
             steps{
                 container("docker-container"){
                     sh 'echo "testing .."'
-                    sh "docker run --name=testimg -d -p 6080:8080 -v /dev/shm:/dev/shm ${repo}/${repo_path}/${image_name}:${image_ver}"
-                    sh 'docker exec testimg $(cat test.sh) > output.txt'
-                    sh 'docker container kill testimg'
+                    sh "docker run --cidfile cid.txt -d -p 6080:8080 -v /dev/shm:/dev/shm ${repo}/${repo_path}/${image_name}:${image_ver}"
+                    sh 'docker exec $(cat cid.txt) $(cat test.sh) > output.txt'
+                    sh 'docker container kill $(cat cid.txt)'
                     sh "cat output.txt"
                 }
             }
