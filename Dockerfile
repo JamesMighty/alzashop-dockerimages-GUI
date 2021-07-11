@@ -60,6 +60,6 @@ RUN apt-get update -y \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox
 
-RUN bash /startup.sh
-ENTRYPOINT [ "bash" ]
+ADD startup.sh /startupv2.sh
+ENTRYPOINT [ "/startupv2.sh" ]
 CMD [ "cat" ]
