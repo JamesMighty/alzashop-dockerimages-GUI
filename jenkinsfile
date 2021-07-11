@@ -34,12 +34,12 @@ pipeline {
                 container("docker-container"){
                     sh 'echo "testing .."'
                     script{
-                        app.inside {
+                        app.inside("-p 6080:80") {
                             sh 'echo "testing"'.
                             sh 'geckodriver --version'
                             sh 'python3 --version'
                             sh 'pip --version'
-                            sh 'firefox -width=1080 -height=720 -url http://gooogle.com'
+                            sh 'firefox -width=1080 -height=720 -url http://google.com'
                         }
                     }
                 }

@@ -6,15 +6,16 @@
         # Ubuntu
         # GUI
 
-FROM ubuntu:latest
+FROM dorowu/ubuntu-desktop-lxde-vnc:latest
 
 # specify firefox and geckodriver versions to obtain
 ARG firefox_ver=89.0.2
 ARG geckodriver_ver=0.29.1
-# pass for vnc
-ARG x11vnc_pass=1234
+
 # run privileged
 USER root
+
+ENV DISPLAY :0
 
 # add universe sources to access to needed resources
 RUN echo "deb http://archive.ubuntu.com/ubuntu bionic main universe\n\
@@ -59,6 +60,4 @@ RUN apt-get update -y \
             /tmp/*
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-pip python3 x11vnc xvfb firefox
-# add pass to x11vnc
-RUN mkdir ~/.vnc && x11vnc -storepasswd ${x11vnc_pass} ~/.vnc/passwd
+    python3-pip python3 firefox
