@@ -59,3 +59,7 @@ RUN apt-get update -y \
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox
+
+RUN bash /startup.sh
+ENTRYPOINT [ "bash" ]
+CMD [ "cat" ]
