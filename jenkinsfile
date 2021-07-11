@@ -33,16 +33,9 @@ pipeline {
             steps{
                 container("docker-container"){
                     sh 'echo "testing .."'
-                    script{
-                        image.inside("-p 6080:8080 -v /dev/shm:/dev/shm", "tini") {
-                            sh 'echo "testing"'.
-                            sh 'geckodriver --version'
-                            sh 'python3 --version'
-                            sh 'pip --version'
-                            sh 'sleep 120'
-                            sh 'firefox -width=1080 -height=720 -url http://google.com'
-                        }
-                    }
+                    sh "docker run --cidfile cid.txt -p 6080:8080 -v /dev/shm:/dev/shm ${repo}/${repo_path}/${image_name}:${image_ver}"
+                    sh "docker exec $(cat cid.txt) $(cat test.sh) > output.txt"
+                    sh "docker container kill $(cat cid.txt)"
                 }
             }
         }
