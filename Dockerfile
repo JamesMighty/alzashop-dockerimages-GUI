@@ -59,9 +59,3 @@ RUN apt-get update -y \
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox
-
-ADD startup.sh /startupv2.sh
-RUN chown 0:0 /startupv2.sh
-RUN chmod +x /startupv2.sh
-ENTRYPOINT [ "/startupv2.sh" ]
-CMD [ "cat" ]
