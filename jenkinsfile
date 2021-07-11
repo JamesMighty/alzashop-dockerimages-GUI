@@ -34,7 +34,7 @@ pipeline {
                 container("docker-container"){
                     sh 'echo "testing .."'
                     script{
-                        app.inside("-p 6080:80") {
+                        app.inside("-p 6080:80 -v /dev/shm:/dev/shm") {
                             sh 'echo "testing"'.
                             sh 'geckodriver --version'
                             sh 'python3 --version'
