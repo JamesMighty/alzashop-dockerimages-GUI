@@ -15,8 +15,6 @@ ARG geckodriver_ver=0.29.1
 # run privileged
 USER root
 
-ENV DISPLAY :0
-
 # add universe sources to access to needed resources
 RUN echo "deb http://archive.ubuntu.com/ubuntu bionic main universe\n\
 deb http://archive.ubuntu.com/ubuntu bionic-security main universe\n\
@@ -61,5 +59,3 @@ RUN apt-get update -y \
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox
-
-CMD [ "cat" ]
