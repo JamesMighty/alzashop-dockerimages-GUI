@@ -39,6 +39,7 @@ pipeline {
                             sh 'geckodriver --version'
                             sh 'python3 --version'
                             sh 'pip --version'
+                            sh 'sleep 60'
                         }
                     }
                 }
