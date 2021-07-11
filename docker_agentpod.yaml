@@ -24,6 +24,7 @@ spec:
     ports:
       - containerPort: 58524
       - containerPort: 80
+      - containerPort: 6080
     imagePullSecrets:
       - name: artifact-registry
   volumes:
