@@ -34,7 +34,7 @@ pipeline {
                 container("docker-container"){
                     sh 'echo "testing .."'
                     sh "docker run --cidfile cid.txt -d -p 6080:8080 -v /dev/shm:/dev/shm ${repo}/${repo_path}/${image_name}:${image_ver}"
-                    sh 'docker exec -it $(cat cid.txt) bash -- $(cat test.sh)'
+                    sh 'cat test.sh | docker exec -it $(cat cid.txt) bash'
                     sh 'docker container kill $(cat cid.txt)'
                 }
             }
