@@ -33,6 +33,7 @@ pipeline {
             steps{
                 container("docker-container"){
                     sh 'echo "testing .."'
+                    sh 'docker container ls -o wide'
                     sh "docker run --cidfile cid.txt -d -p 8080:80 -v /dev/shm:/dev/shm ${repo}/${repo_path}/${image_name}:${image_ver}"
                     sh 'cat test.sh | docker exec $(cat cid.txt) bash'
                     sh 'docker container kill $(cat cid.txt)'
