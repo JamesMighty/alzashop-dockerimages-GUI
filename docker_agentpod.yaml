@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   labels:
     jenkins: kubepod-slave
+    application: vnc-server
 podRetention: onFailure
 spec:
   containers:
