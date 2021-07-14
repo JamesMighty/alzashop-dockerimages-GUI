@@ -29,6 +29,20 @@ spec:
       - containerPort: 5900
     imagePullSecrets:
       - name: artifact-registry
+    readinessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/testimg.lock
+      initialDelaySeconds: 5
+      periodSeconds: 5
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /usr/local/apache2/conf/httpd.conf
+      initialDelaySeconds: 5
+      periodSeconds: 5
   volumes:
     - name: unixsocket
       hostPath:

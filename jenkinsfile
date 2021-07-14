@@ -37,7 +37,9 @@ pipeline {
                     sh 'ip a'
                     script{
                         image.withRun("--name=asug-${env.BUILD_NUMBER} -p 7080:80 -v /dev/shm:/dev/shm") { container ->
+                            sh "touch /tmp/testimg.lock"
                             sh "cat test.sh | docker exec -i asug-${env.BUILD_NUMBER} /bin/bash"
+                            sh "rm -rf /tmp/testimg.lock"
                         }
                     }
                 }
