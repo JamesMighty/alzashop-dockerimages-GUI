@@ -28,6 +28,19 @@ spec:
       - containerPort: 7080
     imagePullSecrets:
       - name: artifact-registry
+    livenessProbe:
+      tcpSocket:
+        port: 80
+      initialDelaySeconds: 1
+      timeoutSeconds: 1
+      ### checks if http-vnc connection is working
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 7080
+        scheme: HTTP
+      initialDelaySeconds: 1
+      timeoutSeconds: 1
   volumes:
     - name: unixsocket
       hostPath:
