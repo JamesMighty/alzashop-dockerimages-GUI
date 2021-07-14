@@ -38,11 +38,6 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
             $toolDeps \
     \
-    # Install dependencies for Firefox
-    && apt-get install -y --no-install-recommends --no-install-suggests \
-            `apt-cache depends firefox-esr | awk '/Depends:/{print$2}'` \
-            # additional 'firefox-esl' dependencies which is not in 'depends' list
-            libxt6 \
     # Download and install geckodriver
     && curl -fL -o /tmp/geckodriver.tar.gz \
             https://github.com/mozilla/geckodriver/releases/download/v${geckodriver_ver}/geckodriver-v${geckodriver_ver}-linux64.tar.gz \
@@ -59,7 +54,7 @@ RUN apt-get update -y \
 
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-pip python3 firefox libpci-dev
+    python3-pip python3 firefox
 
 ENV DISPLAY=:1
 ENTRYPOINT [ "/startup.sh" ]
