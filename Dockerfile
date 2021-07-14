@@ -56,6 +56,8 @@ RUN apt-get update -y \
             $toolDeps \
     && rm -rf /var/lib/apt/lists/* \
             /tmp/*
+
+RUN snap remove firefox
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox firefox-wayland
