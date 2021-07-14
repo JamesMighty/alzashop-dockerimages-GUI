@@ -8,7 +8,6 @@ spec:
   containers:
   - name: docker-container
     image: docker:latest
-    imagePullPolicy: Always
     tty: true
     privileged: true
     command: ['docker', 'run', '-p', '80:80', 'httpd:latest']
