@@ -34,16 +34,16 @@ spec:
         path: /
         port: 80
         scheme: HTTP
-      initialDelaySeconds: 1
-      timeoutSeconds: 1
+      initialDelaySeconds: 10
+      timeoutSeconds: 5
       ### checks if http-vnc connection is working
     readinessProbe:
       httpGet:
         path: /
         port: 80
         scheme: HTTP
-      initialDelaySeconds: 1
-      timeoutSeconds: 1
+      initialDelaySeconds: 10
+      timeoutSeconds: 5
   volumes:
     - name: unixsocket
       hostPath:
