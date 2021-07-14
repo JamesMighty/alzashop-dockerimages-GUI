@@ -36,7 +36,7 @@ pipeline {
                     sh 'docker container ls'
                     script{
                         image.withRun("--name=asug-${env.BUILD_NUMBER} -p 7080:80 -v /dev/shm:/dev/shm") { container ->
-                            sh "cat test.sh | docker exec asug-${env.BUILD_NUMBER} -i /bin/bash"
+                            sh "cat test.sh | docker exec -i asug-${env.BUILD_NUMBER} /bin/bash"
                         }
                     }
                 }
