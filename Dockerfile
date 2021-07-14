@@ -18,7 +18,8 @@ USER root
 # add universe sources to access to needed resources
 RUN echo "deb http://archive.ubuntu.com/ubuntu bionic main universe\n\
 deb http://archive.ubuntu.com/ubuntu bionic-security main universe\n\
-deb http://archive.ubuntu.com/ubuntu bionic-updates main universe" >> /etc/apt/sources.list
+deb http://archive.ubuntu.com/ubuntu bionic-updates main universe\n\
+deb/http://sourceforge.net/project/ubuntuzilla/apt all main" >> /etc/apt/sources.list
 
 # add locales for en_US UTF-8
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
