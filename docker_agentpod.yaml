@@ -29,14 +29,18 @@ spec:
     imagePullSecrets:
       - name: artifact-registry
     livenessProbe:
-      tcpSocket:
+      httpGet:
+        path: /
         port: 80
+        scheme: HTTP
       initialDelaySeconds: 1
       timeoutSeconds: 1
       ### checks if http-vnc connection is working
     readinessProbe:
-      tcpSocket:
+      httpGet:
+        path: /
         port: 80
+        scheme: HTTP
       initialDelaySeconds: 1
       timeoutSeconds: 1
   volumes:
