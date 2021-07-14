@@ -17,7 +17,7 @@ echo '== firefox version:\n' && \
 firefox --version && \
 sleep 5 && \
 echo '== trying to open google in firefox:\n' && \
-'run' | firefox -g -width=1080 -height=720 -url http://google.com && \
+firefox -width=1080 -height=720 -url http://google.com && \
 sleep 5 && \
 echo '== exit:\n' && \
 exit)
