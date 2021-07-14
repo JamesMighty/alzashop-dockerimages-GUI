@@ -37,6 +37,7 @@ pipeline {
                         image.withRun("-p 6080:80 -v /dev/shm:/dev/shm") { container ->
                             sh "cat test.sh | docker exec ${container.id} bash"
                         }
+                    }
                 }
             }
         }
