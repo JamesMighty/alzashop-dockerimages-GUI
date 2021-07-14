@@ -5,5 +5,7 @@ cat /etc/supervisor/conf.d/supervisord.conf && \
 geckodriver --version && \
 python3 --version && \
 pip --version && \
-firefox -width=1080 -height=720 -url http://google.com && \
+sleep 5 && \
+firefox -width=1080 -height=720 -url http://google.com & \
+sleep 5 && \
 exit)
