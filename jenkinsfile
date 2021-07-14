@@ -40,7 +40,6 @@ pipeline {
                             sh 'cat output.txt'
                         }
                     }
-                    sh 'cat output.txt'
                 }
             }
         }
