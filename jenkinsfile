@@ -36,7 +36,8 @@ pipeline {
                     sh 'docker container ls'
                     script{
                         image.withRun("-p 7080:80 -v /dev/shm:/dev/shm") { container ->
-                            sh "cat test.sh | docker exec ${container.id} bash"
+                            sh "(cat test.sh | docker exec ${container.id} bash) > output.txt"
+                            sh "cat output.txt"
                         }
                     }
                 }
