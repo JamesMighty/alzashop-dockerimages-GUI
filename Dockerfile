@@ -53,6 +53,7 @@ RUN apt-get update -y \
             /tmp/*
 
 # install requiments for running tests
+RUN apt-get remove firefox
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox libpci-dev libpci3
 
