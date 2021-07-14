@@ -33,8 +33,9 @@ pipeline {
             steps{
                 container("docker-container"){
                     sh 'echo "testing .."'
+                    sh 'docker container ls'
                     script{
-                        image.withRun("-p 6080:80 -v /dev/shm:/dev/shm") { container ->
+                        image.withRun("-p 7080:80 -v /dev/shm:/dev/shm") { container ->
                             sh "cat test.sh | docker exec ${container.id} bash"
                         }
                     }
