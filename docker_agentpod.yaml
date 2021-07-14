@@ -30,15 +30,13 @@ spec:
       - name: artifact-registry
     livenessProbe:
       tcpSocket:
-        port: 5900
+        port: 80
       initialDelaySeconds: 1
       timeoutSeconds: 1
       ### checks if http-vnc connection is working
     readinessProbe:
-      httpGet:
-        path: /
-        port: 7080
-        scheme: HTTP
+      tcpSocket:
+        port: 80
       initialDelaySeconds: 1
       timeoutSeconds: 1
   volumes:
