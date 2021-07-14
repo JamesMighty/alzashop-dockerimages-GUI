@@ -1,4 +1,6 @@
 (echo "testing inside container" && \
+echo "print current interfaces:\n" && \
+ip a && \
 echo "print file '/startup.sh':\n" && \
 cat /startup.sh && \
 echo "print file '/etc/supervisor/supervisord.conf':\n" && \
