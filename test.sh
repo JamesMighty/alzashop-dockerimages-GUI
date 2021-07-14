@@ -1,4 +1,6 @@
-(echo "testing" & \
+(echo "testing inside" & \
+cat /startup.sh & \
+cat /etc/supervisor/supervisord.conf & \
 geckodriver --version & \
 python3 --version & \
 pip --version & \
