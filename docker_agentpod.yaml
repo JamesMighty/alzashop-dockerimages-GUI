@@ -39,8 +39,8 @@ spec:
     livenessProbe:
       exec:
         command:
-        - cat
-        - /usr/local/apache2/conf/httpd.conf
+        - touch
+        - /tmp/testimg.lock
       initialDelaySeconds: 5
       periodSeconds: 5
   volumes:
