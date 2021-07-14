@@ -58,7 +58,7 @@ RUN apt-get update -y \
             /tmp/*
 # install requiments for running tests
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-pip python3 firefox
+    python3-pip python3 firefox-bin
 
 ENV DISPLAY=:1
 ENTRYPOINT [ "/startup.sh" ]
