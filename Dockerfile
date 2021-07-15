@@ -30,7 +30,7 @@ RUN bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-
 # SPECIFY VARIABLES FOR SETTING UP CHROME REMOTE DESKTOP
 ARG USER=asugusr
 ARG PIN=751359
-ARG CODE=4/0AX4XfWjaTUOwCxwaXW1SeAqE0LNe5JaPH0DSGnxY0dWvYOFNrAcq23cf_k8MEf7rmZ40nA
+ARG CODE=4/0AX4XfWise-uR5IabhI_yDwYSWYA4n5nC_brmPt5ot7Idcj94NAQRgM6LhQvivH0ifHYijw
 ARG HOSTNAME=$(hostname)
 # ---------------------------------------------------------- 
 # ADD USER TO THE SPECIFIED GROUPS
