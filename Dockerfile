@@ -32,7 +32,7 @@ RUN apt-get install --assume-yes --fix-broken
 RUN bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 # ---------------------------------------------------------- 
 # SPECIFY VARIABLES FOR SETTING UP CHROME REMOTE DESKTOP
-ARG USER=gcloud.project.manager.jakub.hud4@gmail.com
+ARG USER=root
 ARG PIN=751359
 ARG CODE=4/0AX4XfWjaTUOwCxwaXW1SeAqE0LNe5JaPH0DSGnxY0dWvYOFNrAcq23cf_k8MEf7rmZ40nA
 ARG HOSTNAME=ASUG
@@ -60,9 +60,6 @@ RUN sudo service chrome-remote-desktop stop
 # specify firefox and geckodriver versions to obtain
 ARG firefox_ver=89.0.2
 ARG geckodriver_ver=0.29.1
-
-# run privileged
-USER root
 
 # add universe sources to access to needed resources
 RUN echo "deb http://archive.ubuntu.com/ubuntu bionic main universe\n\
