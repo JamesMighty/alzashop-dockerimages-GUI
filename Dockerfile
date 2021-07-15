@@ -28,13 +28,16 @@ RUN apt-get install --assume-yes --fix-broken
 RUN bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 # ---------------------------------------------------------- 
 # SPECIFY VARIABLES FOR SETTING UP CHROME REMOTE DESKTOP
-ARG USER=root
+ARG USER=asugusr
 ARG PIN=751359
 ARG CODE=4/0AX4XfWjaTUOwCxwaXW1SeAqE0LNe5JaPH0DSGnxY0dWvYOFNrAcq23cf_k8MEf7rmZ40nA
 ARG HOSTNAME=$(hostname)
 # ---------------------------------------------------------- 
 # ADD USER TO THE SPECIFIED GROUPS
-RUN echo ${HOSTNAME}}
+RUN adduser --disabled-password --gecos '' $USER
+RUN mkhomedir_helper $USER
+RUN adduser $USER sudo
+RUN echo ${HOSTNAME}
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN usermod -aG chrome-remote-desktop $USER
 USER $USER
@@ -95,7 +98,7 @@ RUN apt-get update -y \
 RUN apt-get remove -y firefox
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox libpci-dev libpci3
-    
+
 RUN sudo service chrome-remote-desktop stop
 # EXTEND THE CMD WITH SLEEP INFINITY & WAIT IN ORDER TO KEEP THE REMOTE DESKTOP RUNNING
 CMD [ "/bin/bash","-c","sudo service chrome-remote-desktop start ; echo $HOSTNAME ; sleep infinity & wait"]
