@@ -32,7 +32,7 @@ RUN apt-get install --assume-yes --fix-broken
 RUN bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 # ---------------------------------------------------------- 
 # SPECIFY VARIABLES FOR SETTING UP CHROME REMOTE DESKTOP
-ARG USER=root
+ARG USER=asugusr
 ARG PIN=751359
 ARG CODE=4/0AX4XfWjaTUOwCxwaXW1SeAqE0LNe5JaPH0DSGnxY0dWvYOFNrAcq23cf_k8MEf7rmZ40nA
 ARG HOSTNAME=ASUG
