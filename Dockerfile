@@ -35,7 +35,7 @@ RUN bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-
 ARG USER=asugusr
 ARG PIN=751359
 ARG CODE=4/0AX4XfWjaTUOwCxwaXW1SeAqE0LNe5JaPH0DSGnxY0dWvYOFNrAcq23cf_k8MEf7rmZ40nA
-ARG HOSTNAME=ASUG
+ARG HOSTNAME=$(hostname)
 # ---------------------------------------------------------- 
 # ADD USER TO THE SPECIFIED GROUPS
 RUN adduser --disabled-password --gecos '' $USER
@@ -50,8 +50,7 @@ RUN chown "$USER:$USER" .config/chrome-remote-desktop
 RUN chmod a+rx .config/chrome-remote-desktop
 RUN touch .config/chrome-remote-desktop/host.json
 # INSTALL GOOGLE'S CHROME REMOTE DESKTOP WITH CODE, HOSTNAME AND PIN FROM ENV VAR
-RUN DISPLAY= /opt/google/chrome-remote-desktop/start-host --code=$CODE \
-    --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$HOSTNAME --pin=$PIN
+RUN DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWh90dx79IttB1y_1o3E2r-8O6ilHpR9IDw4FP-vqDCInoa5SVyGwt8LFHReREFjYQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=${HOSTNAME}} --pin=${PIN}
 # COPY THE CONFIGURATION TO THE NEW FILE THAT MATCHES THE CORRECT HOSTNAME (MD5 HASH THEREOF)
 RUN HOST_HASH=$(echo -n $HOSTNAME | md5sum | cut -c -32) && \
     FILENAME=.config/chrome-remote-desktop/host#${HOST_HASH}.json && echo $FILENAME && \
