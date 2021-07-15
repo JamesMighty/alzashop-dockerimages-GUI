@@ -23,7 +23,6 @@ spec:
       - name: tmp
         mountPath: /tmp
     ports:
-      - containerPort: 58524
       - containerPort: 80
       - containerPort: 7080
       - containerPort: 5900
