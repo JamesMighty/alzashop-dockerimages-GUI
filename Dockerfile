@@ -49,7 +49,7 @@ RUN DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWh90dx
 RUN HOST_HASH=$(echo -n $HOSTNAME | md5sum | cut -c -32) && \
     FILENAME=.config/chrome-remote-desktop/host#${HOST_HASH}.json && echo $FILENAME && \
     cp .config/chrome-remote-desktop/host#*.json $FILENAME
-RUN sudo service chrome-remote-desktop stop
+
 # specify firefox and geckodriver versions to obtain
 ARG firefox_ver=89.0.2
 ARG geckodriver_ver=0.29.1
@@ -95,5 +95,7 @@ RUN apt-get update -y \
 RUN apt-get remove -y firefox
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3 firefox libpci-dev libpci3
+    
+RUN sudo service chrome-remote-desktop stop
 # EXTEND THE CMD WITH SLEEP INFINITY & WAIT IN ORDER TO KEEP THE REMOTE DESKTOP RUNNING
 CMD [ "/bin/bash","-c","sudo service chrome-remote-desktop start ; echo $HOSTNAME ; sleep infinity & wait"]
